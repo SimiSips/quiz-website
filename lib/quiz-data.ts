@@ -2001,5 +2001,3 @@ export function getShuffledQuizData(): QuizSection[] {
     questions: shuffleArray(section.questions).slice(0, 10) // Take only 10 random questions
   }));
 }
-
-export { QuizSection, Question };
