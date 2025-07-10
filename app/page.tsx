@@ -192,25 +192,6 @@ export default function Home() {
 
             <Card className="max-w-2xl mx-auto">
               <CardHeader>
-                <CardTitle className="text-center">About Your Instructor</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="text-center">
-                  <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
-                    SR
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">Simphiwe Radebe</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    Software Engineer and Tech Educator passionate about empowering the next generation of African developers. 
-                    With extensive experience in full-stack development and a commitment to excellence, Simphiwe has designed 
-                    this comprehensive exam prep to ensure you're fully prepared for your App Academy final assessment.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="max-w-2xl mx-auto">
-              <CardHeader>
                 <CardTitle className="text-center">Exam Overview</CardTitle>
               </CardHeader>
               <CardContent>
