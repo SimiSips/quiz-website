@@ -5,9 +5,11 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Separator } from '@/components/ui/separator';
-import { CheckCircle, XCircle, Clock, Download, RotateCcw, AlertCircle, Trophy, Target, Sun, Moon } from 'lucide-react';
+import { CheckCircle, XCircle, Clock, Download, RotateCcw, AlertCircle, Trophy, Target, Sun, Moon, Share2 } from 'lucide-react';
 import { QuizSection } from '@/lib/quiz-data';
 import { cn } from '@/lib/utils';
+import { ShareableImage } from '@/components/shareable-image';
+import { useState } from 'react';
 
 interface ResultsViewProps {
   answers: Record<string, string>;
@@ -28,6 +30,7 @@ export function ResultsView({
   isDarkMode, 
   onToggleDarkMode 
 }: ResultsViewProps) {
+  const [showShareModal, setShowShareModal] = useState(false);
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -128,6 +131,15 @@ export function ResultsView({
                 <Clock className="w-4 h-4" />
                 <span className="font-mono">{formatTime(timeElapsed)}</span>
               </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setShowShareModal(true)}
+                className="flex items-center space-x-2"
+              >
+                <Share2 className="w-4 h-4" />
+                <span className="hidden sm:inline">Share</span>
+              </Button>
               <Button
                 variant="outline"
                 size="sm"
@@ -329,6 +341,14 @@ export function ResultsView({
             <span>Restart Quiz</span>
           </Button>
           <Button
+            onClick={() => setShowShareModal(true)}
+            size="lg"
+            className="flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white"
+          >
+            <Share2 className="w-4 h-4" />
+            <span>Share Results</span>
+          </Button>
+          <Button
             onClick={onExport}
             variant="outline"
             size="lg"
@@ -339,6 +359,14 @@ export function ResultsView({
           </Button>
         </div>
       </div>
+      
+      {/* Share Modal */}
+      <ShareableImage
+        results={results}
+        timeElapsed={timeElapsed}
+        isVisible={showShareModal}
+        onClose={() => setShowShareModal(false)}
+      />
     </div>
   );
 }
